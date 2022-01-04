@@ -18,7 +18,6 @@ let read (input : string) =
     | Help -> Message.HelpRequested
     | ParseFailed -> NotParsable input
     
-
 open Microsoft.FSharp.Reflection
 
 let createHelpText () : string =
@@ -29,22 +28,27 @@ let createHelpText () : string =
 
 open Commands
 
+let evaluateCommands (command : Command) =
+    match command with
+    | Command.CreateDocument -> 
+        //(command, sprintf "CreateDocument")
+        DocumentLogic.CreateDocument()
+        (command, sprintf "Document created! Probably...")
+    | Command.ReadDocument -> 
+        (command, sprintf "ReadDocument")
+    | Command.UpdateDocument -> 
+        (command, sprintf "UpdateDocument")
+    | Command.DisplayAllDocuments -> 
+        (command, sprintf "DisplayAllDocuments")
+    | Command.CreateUser -> 
+        (command, sprintf "CreateUser")
+    | Command.SwitchUser -> 
+        (command, sprintf "SwitchUser")
+
 let evaluate (command : Command) (msg : Message) =
     match msg with
     | Message.Command cmd ->
-        match cmd with
-        | Command.CreateDocument -> 
-            (command, sprintf "CreateDocument")
-        | Command.ReadDocument -> 
-            (command, sprintf "ReadDocument")
-        | Command.UpdateDocument -> 
-            (command, sprintf "UpdateDocument")
-        | Command.DisplayAllDocuments -> 
-            (command, sprintf "DisplayAllDocuments")
-        | Command.CreateUser -> 
-            (command, sprintf "CreateUser")
-        | Command.SwitchUser -> 
-            (command, sprintf "SwitchUser")
+        evaluateCommands cmd
     | Message.HelpRequested ->
         let message = createHelpText ()
         (command, message)

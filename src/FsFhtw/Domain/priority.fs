@@ -1,8 +1,6 @@
 module Priority
 
 type Priority =
-    | Highest
     | High
-    | Normale
+    | Normal
     | Low
-    | Lowest

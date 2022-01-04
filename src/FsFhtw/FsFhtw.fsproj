@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Logic\documentLogic.fs" />
+    <Compile Include="UI\input.fs" />
     <Compile Include="Domain\commands.fs" />
     <Compile Include="Domain\priority.fs" />
     <Compile Include="Domain\department.fs" />
@@ -13,9 +15,5 @@
     <Compile Include="Parser.fs" />
     <Compile Include="Repl.fs" />
     <Compile Include="Program.fs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logic\" />
-    <Folder Include="UI\" />
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Domain\commands.fs" />
     <Compile Include="Domain\priority.fs" />
     <Compile Include="Domain\department.fs" />
     <Compile Include="Domain\user.fs" />

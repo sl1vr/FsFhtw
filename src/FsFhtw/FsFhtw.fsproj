@@ -11,7 +11,6 @@
     <Compile Include="Domain\department.fs" />
     <Compile Include="Domain\user.fs" />
     <Compile Include="Domain\document.fs" />
-    <Compile Include="Domain.fs" />
     <Compile Include="Parser.fs" />
     <Compile Include="Repl.fs" />
     <Compile Include="Program.fs" />

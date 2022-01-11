@@ -1,6 +1,7 @@
 module Repl
 
 open System
+open Document
 open Parser
 
 type Message =
@@ -32,19 +33,21 @@ open DocumentLogic
 let evaluateCommands (command : Command) =
     match command with
     | Command.CreateDocument ->
-        //(command, sprintf "CreateDocument")
-        createDocument()
-        (command, sprintf "Document created! Probably...")
+        Documents.Instance.Add(createDocument())
+        (command, sprintf "CreateDocument finished successfully.")
     | Command.ReadDocument ->
-        (command, sprintf "ReadDocument")
+        printf "%s" (readDocument())
+        (command, sprintf "ReadDocument finished successfully.")
     | Command.UpdateDocument ->
-        (command, sprintf "UpdateDocument")
+        Documents.Instance.Add(updateDocument())
+        (command, sprintf "UpdateDocument finished successfully.")
     | Command.DisplayAllDocuments ->
-        (command, sprintf "DisplayAllDocuments")
+        Documents.Instance.DisplayAll()
+        (command, sprintf "DisplayAllDocuments finished successfully.")
     | Command.CreateUser ->
-        (command, sprintf "CreateUser")
+        (command, sprintf "CreateUsers finished successfully.")
     | Command.SwitchUser ->
-        (command, sprintf "SwitchUser")
+        (command, sprintf "SwitchUsers finished successfully.")
 
 let evaluate (command : Command) (msg : Message) =
     match msg with

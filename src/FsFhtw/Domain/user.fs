@@ -18,6 +18,7 @@ type User = {
     Department : Department
 }
 
+//singleton for current user
 type CurrentUser private () =
     let mutable name : Name = { FirstName = "Hans"; LastName = "Dampf" }
     let mutable accessLevel = AccessLevel.Admin

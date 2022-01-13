@@ -68,7 +68,7 @@ type CurrentUser private () =
     member this.SwitchUser(newUser : Name) : bool =
         let selectedUser = users |> Array.filter(fun (user : User) -> user.Name.FirstName.Equals(newUser.FirstName) && user.Name.LastName.Equals(newUser.LastName))
         if (selectedUser.Length = 1) then
-            (this.SetNewUser selectedUser[0])
+            (this.SetNewUser (selectedUser[0]))
             true
         else
             false

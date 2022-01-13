@@ -6,4 +6,3 @@ type Command =
     | UpdateDocument
     | DisplayAllDocuments
     | SwitchUser
-    | CreateUser

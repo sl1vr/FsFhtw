@@ -1,6 +1,5 @@
-open Repl
 open Commands
-open User
+open Document
 
 [<EntryPoint>]
 let main argv =
@@ -9,13 +8,5 @@ let main argv =
     printfn "Press CTRL+C to stop the program."
     printf "> "
 
-    //CurrentUser.Instance.SetUsername({ FirstName = "Hansiiiiiiiiii"; LastName = "Dampf" })
-    //CurrentUser.Instance.SetNewUser({ Name = { FirstName = "Sepp"; LastName = "Dampf" }; AccessLevel = AccessLevel.Read; Department = Department.Accounting })
-
-    //let username = CurrentUser.Instance.GetUsername()
-    //let accessLevel = CurrentUser.Instance.GetAccessLevel()
-    //let department = CurrentUser.Instance.GetDepartment()
-    
-    //printf "%s %s %s %s" username.FirstName username.LastName (string accessLevel) (string department)
-
+    Documents.Instance.Init()
     Repl.loop Command.DisplayAllDocuments

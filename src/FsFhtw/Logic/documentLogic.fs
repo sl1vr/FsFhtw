@@ -66,12 +66,13 @@ let createDocumentWithName(name : string) : Document =
     { Name = name; MetaData = metaData; Content = content}
 
 let rec getDocumentByName() : Document =
-    printfn "Which document do you want to update?"
+    Documents.Instance.DisplayAllNames()
+    printfn "Choose a document."
     let key = Console.ReadLine()
     let value = Documents.Instance.Get(key)
     match value with
         | Some document -> document
-        | None -> getDocumentByName()
+        | None -> printfn "Document not found!\n"; getDocumentByName()
 
 let updateDocument() : Document =
     let name = getDocumentByName().Name

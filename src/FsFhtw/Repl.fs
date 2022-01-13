@@ -36,7 +36,7 @@ let evaluateCommands (command : Command) =
         Documents.Instance.Add(createDocument())
         (command, sprintf "CreateDocument finished successfully.")
     | Command.ReadDocument ->
-        printf "%s" (readDocument())
+        printf "%s \n" (readDocument())
         (command, sprintf "ReadDocument finished successfully.")
     | Command.UpdateDocument ->
         Documents.Instance.Add(updateDocument())
@@ -44,9 +44,8 @@ let evaluateCommands (command : Command) =
     | Command.DisplayAllDocuments ->
         Documents.Instance.DisplayAll()
         (command, sprintf "DisplayAllDocuments finished successfully.")
-    | Command.CreateUser ->
-        (command, sprintf "CreateUsers finished successfully.")
     | Command.SwitchUser ->
+        UserLogic.switchUser()
         (command, sprintf "SwitchUsers finished successfully.")
 
 let evaluate (command : Command) (msg : Message) =
@@ -70,6 +69,3 @@ let rec loop (cmd : Command) =
     |> evaluate cmd
     |> print
     |> loop
-
-
-

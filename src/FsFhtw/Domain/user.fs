@@ -65,9 +65,9 @@ type CurrentUser private () =
         for user in users do
             printfn """%s %s, %s, %s""" user.Name.FirstName user.Name.LastName (string user.Department) (string user.AccessLevel)
 
-    member private this.SetUserAndConfirm(value : bool, user : User) : bool =
+    member private this.SetUserAndConfirm(returnValue : bool, user : User) : bool =
         this.SetNewUser user
-        value
+        returnValue
 
     member this.SwitchUser(newUser : Name) : bool =
         let selectedUser = users |> Array.filter(fun (user : User) -> user.Name.FirstName.Equals(newUser.FirstName) && user.Name.LastName.Equals(newUser.LastName))

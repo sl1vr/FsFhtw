@@ -21,7 +21,7 @@ type User = {
 let users : User array = [| 
     {Name = {FirstName = "Lisa"; LastName = "Lustig"}; AccessLevel = AccessLevel.Read; Department = Management};
     {Name = {FirstName = "Walter"; LastName = "Wunderbar"}; AccessLevel = AccessLevel.Write; Department = Accounting}
-    {Name = {FirstName = "Gerald"; LastName = "Gans"}; AccessLevel = AccessLevel.Read; Department = Sales}
+    {Name = {FirstName = "Gisela"; LastName = "Günstig"}; AccessLevel = AccessLevel.Read; Department = Sales}
     {Name = {FirstName = "Ad"; LastName = "Min"}; AccessLevel = AccessLevel.Admin; Department = IT}
     {Name = {FirstName = "Anton"; LastName = "Apfel"}; AccessLevel = AccessLevel.Read; Department = Accounting}
     |]

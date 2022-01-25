@@ -54,6 +54,9 @@ type Documents private () =
     static let instance = Documents()
     static member Instance = instance
 
+    member this.Remove(document : Document) =
+        docMap <- docMap.Remove(document.Name)
+
     member this.Add(newDocument : Document) =
         docMap <- docMap.Add(newDocument.Name, newDocument)
 

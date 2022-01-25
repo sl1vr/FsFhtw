@@ -23,13 +23,29 @@ let rec getTemplate() : string =
 
     body
 
+let rec getRecipient() : Name =
+    printfn "Recipient?"
+    printfn "First name:"
+    let input2_fn = Console.ReadLine()
+    printfn "Last name:"
+    let input2_ln = Console.ReadLine()
+
+    let name =
+        if input2_fn.Equals(String.Empty) || input2_ln.Equals(String.Empty) then
+            printfn """Invalid first or last name!"""
+            getRecipient();
+        else
+            {FirstName = input2_fn; LastName = input2_ln}
+            
+    name
+
 let rec getPriority() : Priority =
     printfn "Priority?"
-    let input2 = Console.ReadLine()
+    let input3 = Console.ReadLine()
     let priority =
-        if input2 = nameof(High) then High
-        elif input2 = nameof(Normal) then Normal
-        elif input2 = nameof(Low) then Low
+        if input3 = nameof(High) then High
+        elif input3 = nameof(Normal) then Normal
+        elif input3 = nameof(Low) then Low
         else
             printfn """Invalid priority! Use %s %s %s""" (nameof(High)) (nameof(Normal)) (nameof(Low))
             getPriority();
@@ -38,7 +54,7 @@ let rec getPriority() : Priority =
 
 let createDocument() : Document =
     let from = CurrentUser.Instance.GetUsername()
-    let ``to`` = {FirstName = "Herbert"; LastName = "Emmentaler"}
+    let ``to`` = getRecipient()
     let header = {From = from; To = ``to``; Date = DateTime.Today}
 
     let body = getTemplate()
@@ -47,21 +63,8 @@ let createDocument() : Document =
 
     let metaData = {AccessLevel = CurrentUser.Instance.GetAccessLevel(); Department = CurrentUser.Instance.GetDepartment(); Priority = priority}
 
-    printf "File name?"
+    printf "File name?\n"
     let name = Console.ReadLine()
-
-    { Name = name; MetaData = metaData; Content = content}
-
-let createDocumentWithName(name : string) : Document =
-    let from = CurrentUser.Instance.GetUsername()
-    let ``to`` = {FirstName = "Herbert"; LastName = "Emmentaler"}
-    let header = {From = from; To = ``to``; Date = DateTime.Today}
-
-    let body = getTemplate()
-    let content = {Header = header; Body = body}
-    let priority = getPriority()
-
-    let metaData = {AccessLevel = CurrentUser.Instance.GetAccessLevel(); Department = CurrentUser.Instance.GetDepartment(); Priority = priority}
 
     { Name = name; MetaData = metaData; Content = content}
 
@@ -75,8 +78,9 @@ let rec getDocumentByName() : Document =
         | None -> printfn "Document not found!\n"; getDocumentByName()
 
 let updateDocument() : Document =
-    let name = getDocumentByName().Name
-    createDocumentWithName(name)
+    let document = getDocumentByName()
+    Documents.Instance.Remove(document)
+    createDocument()
 
 let readDocument() : string =
     let document = getDocumentByName()

@@ -29,7 +29,7 @@ let users : User array = [|
 let stringify(name : Name) =
     name.FirstName + " " + name.LastName
 
-//singleton for current user
+(* singleton for current user *)
 type CurrentUser private () =
     let mutable name : Name = users.[3].Name
     let mutable accessLevel = AccessLevel.Admin

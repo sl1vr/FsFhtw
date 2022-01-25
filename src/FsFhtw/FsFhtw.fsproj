@@ -5,7 +5,6 @@
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="UI/input.fs" />
     <Compile Include="Domain/commands.fs" />
     <Compile Include="Domain/priority.fs" />
     <Compile Include="Domain/department.fs" />

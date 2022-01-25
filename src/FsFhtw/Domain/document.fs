@@ -47,7 +47,7 @@ type Document with
         "TO:   " + stringify this.Content.Header.To + "\n" +
         "BODY: " + string this.Content.Body
 
-//singleton for all documents created at runtime
+(* singleton for all documents created at runtime *)
 type Documents private () =
     let mutable docMap : Map<string,Document> = Map.empty
 

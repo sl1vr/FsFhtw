@@ -5,9 +5,10 @@ open System
 open User
 
 let rec switchUser() =
+    printfn "Current user:\n%s %s\n" (CurrentUser.Instance.GetUsername().FirstName) (CurrentUser.Instance.GetUsername().LastName)
     printfn "Available users:"
     CurrentUser.Instance.DisplayUsers()
-    printfn "First name of new user?"
+    printfn "\nFirst name of new user?"
     let firstName = Console.ReadLine()
     printfn "Last name of new user?"
     let lastName = Console.ReadLine()
